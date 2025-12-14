@@ -31,6 +31,13 @@ class Ntp < Formula
     ldflags = "#{ldflags} -undefined dynamic_lookup" if OS.mac?
     system "make", "install", "LDADD_LIBNTP=#{ldflags}"
   end
+  
+  service do
+    run [opt_sbin/"ntpd", "-c", etc/"ntp.conf", "-g"]
+    keep_alive true
+    require_root true
+    working_dir HOMEBREW_PREFIX
+  end
 
   test do
     # On Linux all binaries are installed in bin, while on macOS they are split between bin and sbin.
