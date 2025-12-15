@@ -33,7 +33,7 @@ class Ntp < Formula
   end
   
   service do
-    run [opt_sbin/"ntpd", "-c", etc/"ntp.conf", "-g"]
+    run [opt_sbin/"ntpd", "-c", etc/"ntp.conf", "-p", var/"run/ntpd.pid", "-n", "-g"]
     keep_alive true
     require_root true
     working_dir HOMEBREW_PREFIX
