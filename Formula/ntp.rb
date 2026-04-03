@@ -11,8 +11,6 @@ class Ntp < Formula
     regex(/href=.*?ntp[._-]v?(\d+(?:\.\d+)+(?:p\d+)?)\.t/i)
   end
 
-  no_autobump! because: :requires_manual_review
-
   depends_on "openssl@3"
 
   def install
